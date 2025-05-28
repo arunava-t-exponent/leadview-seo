@@ -1,11 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('category-list', [CategoryController::class, 'index'])->name('category.list');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
